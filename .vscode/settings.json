@@ -1,8 +1,0 @@
-{
-    "python.pythonPath": "D:\\Users\\lievi\\Anaconda3\\envs\\django\\python.exe",
-    "files.associations": {
-        "**/templates/*.html": "django-html",
-        "**/templates/*": "django-txt",
-        "**/requirements{/**,*}.{txt,in}": "pip-requirements"
-    }
-}
