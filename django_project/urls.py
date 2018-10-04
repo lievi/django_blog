@@ -26,6 +26,6 @@ urlpatterns = [
     path('user/', include('users.urls'), name='users-home')
 ]
 
-if not settings.DEBUG:
+if settings.DEBUG:
     urlpatterns += static(
         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
