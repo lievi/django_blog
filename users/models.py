@@ -12,3 +12,4 @@ class Profile(models.Model):
 
     def save(self, **kwargs):
         super().save()
+        # TODO: Resize the img to upload
