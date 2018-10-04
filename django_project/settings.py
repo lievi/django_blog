@@ -122,32 +122,31 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-if DEBUG is False:
-    # Setting the AWS_S3 configurations
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'blog/static'),
-    ]
+# if DEBUG is False:
+# Setting the AWS_S3 configurations
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'blog/static'),
+]
 
-    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
-    # Use to use cached files for more time
-    AWS_S3_OBJECT_PARAMETERS = {
-        'CacheControl': 'max-age=86400',
-    }
-    AWS_LOCATION = 'static'
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
+# Use to use cached files for more time
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
 
-    DEFAULT_FILE_STORAGE = 'django_project.storage_backends.MediaStorage'
-else:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+DEFAULT_FILE_STORAGE = 'django_project.storage_backends.MediaStorage'
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -168,4 +167,4 @@ DATABASES['default'].update(db_from_env)
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
